@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 570px;
+      min-width: 570px;
+      max-width: 570px;
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #000;
+      padding: 24px 18px 32px;
+      font-size: 34px;
+      line-height: 1.5;
+    }
+    .header { text-align: center; margin-bottom: 16px; }
+    .title { font-weight: bold; font-size: 46px; margin-bottom: 8px; }
+    .sub { font-size: 30px; opacity: 0.9; }
+    .line { border-top: 2px dashed #000; margin: 14px 0; }
+    .meta, .customer { margin-bottom: 10px; font-size: 32px; }
+    .section-title { font-weight: bold; font-size: 36px; margin: 12px 0 8px; }
+    .items-header, .item-row {
+      display: flex;
+      flex-direction: row;
+      font-size: 32px;
+      padding: 8px 0;
+    }
+    .items-header { font-weight: bold; border-bottom: 1px solid #000; padding-bottom: 10px; margin-bottom: 6px; }
+    .item-name { flex: 1.6; }
+    .item-qty { flex: 0.5; text-align: center; }
+    .item-total { flex: 0.7; text-align: left; }
+    .totals { margin-top: 12px; font-size: 32px; }
+    .totals-row { display: flex; justify-content: space-between; margin-top: 8px; }
+    .totals-row.total { font-weight: bold; font-size: 36px; border-top: 2px solid #000; padding-top: 10px; margin-top: 12px; }
+    .footer { text-align: center; margin-top: 24px; font-size: 30px; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="title">Cookies Center</div>
+      <div class="sub">הזמנה #477</div>
+      <div class="sub">ח.פ 302601604</div>
+      <div class="sub">ארלוזורוב 13</div>
+      <div class="sub">בת ים</div>
+      <div class="sub">טל׳ 0505714361</div>
+
+  </div>
+  <div class="meta">
+    תאריך הזמנה: 16.02.2026, 15:39<br />
+    הודפס: 06.03.2026, 08:38<br />
+  </div>
+  <div class="line"></div>
+  <div class="section-title">פרטי לקוח</div>
+  <div class="customer">
+    שם: אורן שלו<br />
+    עיר: בת ים<br />
+    רחוב: ארלוזורוב 13<br />
+    דירה: 7<br />
+    טלפון: 0503399434
+  </div>
+  <div class="line"></div>
+  <div class="section-title">מוצרים</div>
+  <div class="items-header">
+    <span class="item-name">פריט</span>
+    <span class="item-qty">כמות</span>
+    <span class="item-total">סה״כ</span>
+  </div>
+  
+    <div class="item-row">
+      <span class="item-name">שוקולד צ׳יפס קלאסי</span>
+      <span class="item-qty">x1</span>
+      <span class="item-total">24.00</span>
+    </div>
+  <div class="line"></div>
+  <div class="totals">
+    <div class="totals-row"><span>סיכום פריטים</span><span>24.00</span></div>
+    <div class="totals-row"><span>משלוח</span><span>30.00</span></div>
+    <div class="totals-row total"><span>לתשלום</span><span>54.00</span></div>
+  </div>
+  <div class="footer">תודה רבה וטעימה נעימה!</div>
+</body>
+</html>
