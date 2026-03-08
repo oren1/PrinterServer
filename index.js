@@ -346,6 +346,10 @@ app.post('/printer-canvas', async (req, res) => {
 
     const isConnected = await printer.isPrinterConnected();
     await printer.printImageBuffer(image);
+    printer.println('');
+    printer.println('');
+    printer.println('');
+    printer.cut()
     await printer.execute();
 
     await browser.close();
