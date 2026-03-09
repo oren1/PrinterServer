@@ -248,7 +248,7 @@ app.get('/printer-status', async (req, res) => {
  const interfaceString = process.env.PRINTER_INTERFACE || 'printer:auto';
   const printer = new ThermalPrinter({
     type: PrinterTypes.EPSON,
-    interface: 'tcp://192.168.1.87',
+    interface: 'tcp://192.168.1.87:9100',
     // characterSet: CharacterSet.PC862_HEBREW
   });
 
