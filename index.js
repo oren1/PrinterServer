@@ -233,6 +233,47 @@ function createOrderReceiptHTML(fileName, order) {
   return filePath;
 }
 
+/**
+ * Create centered RTL HTML for serving suggestion block.
+ * @param {string} title
+ * @param {string} description
+ * @returns {string}
+ */
+function createServingSuggestionHTML(title, description) {
+  return `<!DOCTYPE html>
+<html dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    body {
+      width: ${RECEIPT_WIDTH}px;
+      margin: 0;
+      padding: 24px 0;
+      background: #fff;
+      color: #000;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      line-height: 1.4;
+    }
+    .title {
+      font-size: 54px;
+      font-weight: bold;
+      margin-bottom: 14px;
+    }
+    .description {
+      font-size: 28px;
+      font-weight: normal;
+      padding: 0 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="title">${title}</div>
+  <div class="description">${description}</div>
+</body>
+</html>`;
+}
+
 
 // Simple example endpoint for testing the server
 app.get('/test', (req, res) => {
@@ -349,7 +390,27 @@ app.post('/printer-canvas', async (req, res) => {
     printer.println('');
     printer.println('');
     printer.println('');
-    printer.cut()
+    printer.cut();
+
+    const servingSuggestionHtml = createServingSuggestionHTML(
+      'הצעת הגשה',
+      'אם רוצים לאכול חם אפשר לחמם 10 עד 15 שניות במיקרו והעוגייה חוזרת להיות פאדג׳ית וקרמית במרכז והקצוות פריכים ועשירים '
+    );
+    await page.setContent(servingSuggestionHtml, { waitUntil: 'load' });
+    await new Promise((r) => setTimeout(r, 200));
+    const suggestionBody = await page.$('body');
+    const suggestionScreenshot = await suggestionBody.screenshot({ omitBackground: false });
+    const suggestionImage = await sharp(suggestionScreenshot)
+      .resize(RECEIPT_WIDTH)
+      .grayscale()
+      .threshold(160)
+      .png()
+      .toBuffer();
+    await printer.printImageBuffer(suggestionImage);
+    printer.println('');
+    printer.println('');
+    printer.println('');
+    printer.cut();
     await printer.execute();
 
     await browser.close();
