@@ -394,7 +394,7 @@ app.post('/printer-canvas', async (req, res) => {
 
     const servingSuggestionHtml = createServingSuggestionHTML(
       'הצעת הגשה',
-      'אם רוצים לאכול חם אפשר לחמם 10 עד 15 שניות במיקרו והעוגייה חוזרת להיות פאדג׳ית וקרמית במרכז והקצוות פריכים ועשירים '
+      'העוגיות יוצאות אליכם ישר מהתנור אבל אם בא לכם עוגיה חמה אז 10 עד 15 שניות במיקרו עושים את העבודה'
     );
     await page.setContent(servingSuggestionHtml, { waitUntil: 'load' });
     await new Promise((r) => setTimeout(r, 200));
